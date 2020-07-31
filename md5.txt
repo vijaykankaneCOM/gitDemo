@@ -1,1 +1,35 @@
-hi to all
+
+
+function navigate(){
+	var $linkExcel =_readExcelFile("../../../../../commonNavigateConf/Navigate.xlsx", "Sheet1");
+_navigateTo($linkExcel[0][1]);
+}
+
+
+function login($userName, $password){
+	var $loginExcel =_readExcelFile("../../../../../commonLoginConf/Login.xlsx", "Sheet1");
+	_includeOnce("../../../../utility/Readbuttons.sah");
+	_setValue(_textbox("bean.userName"), $userName);
+	_setValue(_password("bean.password"), $password);
+	_setValue(_textbox("bean.captchaText"),$loginExcel[1][4]);
+	_click(_submit($g_button_Login));
+	_click(_link("Content Management"));
+
+}
+
+function userCreationlogin($userName, $password){
+	var $loginExcel =_readExcelFile("../../../../../commonLoginConf/Login.xlsx", "Sheet1");
+	_setValue(_textbox("bean.userName"), $userName);
+	_setValue(_password("bean.password"), $password);
+	_setValue(_textbox("bean.captchaText"), $loginExcel[1][4]);
+	_click(_submit("Login"));
+}
+
+function logout(){
+	_includeOnce("../../../../utility/Readbuttons.sah");
+	_click(_submit("dropbtn[1]"));
+	_click(_link($g_leftMenuBar_Logout));
+	_click(_submit($g_button_OK));
+	_click(_submit($g_button_OK));
+
+}
