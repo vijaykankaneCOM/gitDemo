@@ -25,11 +25,3 @@ function userCreationlogin($userName, $password){
 	_click(_submit("Login"));
 }
 
-function logout(){
-	_includeOnce("../../../../utility/Readbuttons.sah");
-	_click(_submit("dropbtn[1]"));
-	_click(_link($g_leftMenuBar_Logout));
-	_click(_submit($g_button_OK));
-	_click(_submit($g_button_OK));
-
-}
